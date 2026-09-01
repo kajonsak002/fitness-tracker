@@ -11,33 +11,29 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <div class="brand"><div class="brand-mark">F</div><div><strong>FitTrack</strong><span>Personal Fitness</span></div></div>
-      <nav>
-        <button class="nav-item active" data-section="dashboard">⌂ <span>Dashboard</span></button>
-        <button class="nav-item" data-section="workout">▣ <span>วันนี้ออกอะไร</span></button>
-        <button class="nav-item" data-section="history">◷ <span>ประวัติ</span></button>
-        <button class="nav-item" data-section="progress">↗ <span>Progress</span></button>
-      </nav>
-      <div class="sidebar-bottom"><div class="goal-card"><small>เป้าหมายสัปดาห์นี้</small><b id="goalText">3 / 4 วัน</b><div class="progress"><i id="goalBar"></i></div></div><p>FitTrack v1.0</p></div>
-    </aside>
-    <main class="main">
-      <header class="topbar"><div><p class="eyebrow">PERSONAL FITNESS TRACKER</p><h1 id="pageTitle">Dashboard</h1></div><div class="today-pill" id="today"></div></header>
-
-      <section id="dashboard" class="section active-section">
-        <div class="hero"><div><span class="tag">DAY 1 · FULL BODY</span><h2>วันนี้เรามาเริ่มกันเลย</h2><p>ทำตามตารางทีละท่า แล้วกดบันทึกเมื่อทำเสร็จ</p><button class="primary" data-go="workout">เริ่ม Workout →</button></div><div class="hero-stat"><span>Workout วันนี้</span><strong id="heroCount">0%</strong><small>ความสำเร็จ</small></div></div>
-        <div class="stats-grid"><article><span>Workout ทั้งหมด</span><strong id="statWorkouts">0</strong><small>ครั้ง</small></article><article><span>เวลารวม</span><strong id="statMinutes">0</strong><small>นาที</small></article><article><span>🔥 Streak</span><strong id="statStreak">0</strong><small>วัน</small></article><article><span>เซ็ตสะสม</span><strong id="statSets">0</strong><small>เซ็ต</small></article></div>
-        <div class="content-grid"><div class="panel"><div class="panel-head"><div><span class="eyebrow">TODAY</span><h3>ตารางวันนี้</h3></div><button class="text-btn" data-go="workout">ดูทั้งหมด →</button></div><div id="dashboardExercises"></div></div><div class="panel"><div class="panel-head"><div><span class="eyebrow">WEEKLY GOAL</span><h3>ความสม่ำเสมอ</h3></div></div><div class="week" id="week"></div><p class="muted">เป้าหมาย 4 วัน / สัปดาห์</p></div></div>
-      </section>
-
-      <section id="workout" class="section"><div class="section-intro"><span class="tag">FULL BODY</span><h2>Workout วันนี้</h2><p>พักระหว่างเซ็ต 60–90 วินาที และเลือกน้ำหนักที่ควบคุมท่าได้ดี</p></div><div class="workout-list" id="workoutList"></div><div class="finish-card"><div><strong>ทำครบทุกท่าแล้ว?</strong><p>บันทึก Workout เพื่ออัปเดต Dashboard และ Progress</p></div><button class="primary" id="finishWorkout">✓ บันทึก Workout วันนี้</button></div></section>
-
-      <section id="history" class="section"><div class="section-intro"><span class="tag">LOGBOOK</span><h2>ประวัติการออกกำลังกาย</h2><p>ติดตามสิ่งที่ทำไปแล้วในแต่ละวัน</p></div><div class="panel"><div id="historyList" class="history-list"></div></div></section>
-
-      <section id="progress" class="section"><div class="section-intro"><span class="tag">PROGRESS</span><h2>พัฒนาการของคุณ</h2><p>ข้อมูลทั้งหมดถูกเก็บไว้ในเครื่องของคุณ</p></div><div class="stats-grid"><article><span>Workout</span><strong id="progressWorkouts">0</strong><small>ครั้ง</small></article><article><span>เวลา</span><strong id="progressMinutes">0</strong><small>นาที</small></article><article><span>เซ็ต</span><strong id="progressSets">0</strong><small>เซ็ต</small></article><article><span>ความสำเร็จ</span><strong id="progressRate">0%</strong><small>โดยรวม</small></article></div><div class="panel progress-panel"><div class="panel-head"><div><span class="eyebrow">EXERCISES</span><h3>รายการท่า</h3></div></div><div id="exerciseProgress"></div></div></section>
-    </main>
-  </div>
-  <script src="app.js"></script>
-</body>
-</html>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">F</div><div><strong>FitTrack</strong><span>Personal Fitness</span></div></div>
+  <nav>
+    <button class="nav-item active" data-section="dashboard">⌂ <span>Dashboard</span></button>
+    <button class="nav-item" data-section="workout">▣ <span>วันนี้ออกอะไร</span></button>
+    <button class="nav-item" data-section="history">◷ <span>ประวัติ</span></button>
+    <button class="nav-item" data-section="progress">↗ <span>Progress</span></button>
+    <button class="nav-item" data-section="settings">⚙ <span>ตั้งค่า & ข้อมูล</span></button>
+  </nav>
+  <div class="sidebar-bottom"><div class="goal-card"><small>เป้าหมายสัปดาห์นี้</small><b id="goalText">0 / 4 วัน</b><div class="progress"><i id="goalBar"></i></div></div><p>FitTrack v1.1</p></div>
+</aside>
+<main class="main">
+<header class="topbar"><div><p class="eyebrow">PERSONAL FITNESS TRACKER</p><h1 id="pageTitle">Dashboard</h1></div><div class="today-pill" id="today"></div></header>
+<section id="dashboard" class="section active-section">
+  <div class="hero"><div><span class="tag">DAY 1 · FULL BODY</span><h2>วันนี้เรามาเริ่มกันเลย</h2><p>เริ่มทีละท่า ดูจำนวนครั้ง น้ำหนักฐาน และบันทึกผลทุกเซ็ต</p><button class="primary" data-go="workout">เริ่ม Workout →</button></div><div class="hero-stat"><span>Workout วันนี้</span><strong id="heroCount">0%</strong><small>ความสำเร็จ</small></div></div>
+  <div class="stats-grid"><article><span>Workout ทั้งหมด</span><strong id="statWorkouts">0</strong><small>ครั้ง</small></article><article><span>เวลารวม</span><strong id="statMinutes">0</strong><small>นาที</small></article><article><span>Streak</span><strong id="statStreak">0</strong><small>วัน</small></article><article><span>เซ็ตสะสม</span><strong id="statSets">0</strong><small>เซ็ต</small></article></div>
+  <div class="content-grid"><div class="panel"><div class="panel-head"><div><span class="eyebrow">TODAY</span><h3>ตารางวันนี้</h3></div><button class="text-btn" data-go="workout">ดูทั้งหมด →</button></div><div id="dashboardExercises"></div></div><div class="panel"><div class="panel-head"><div><span class="eyebrow">WEEKLY GOAL</span><h3>ความสม่ำเสมอ</h3></div></div><div class="week" id="week"></div><p class="muted">เป้าหมาย 4 วัน / สัปดาห์</p></div></div>
+</section>
+<section id="workout" class="section"><div class="section-intro"><span class="tag">FULL BODY</span><h2>Workout วันนี้</h2><p>กด “เริ่มท่า” เพื่อโฟกัสทีละท่า ระบบจะแสดงจำนวนครั้งและน้ำหนัก Base ของคุณ</p></div><div id="activeExercise" class="active-exercise"></div><div class="workout-list" id="workoutList"></div><div class="finish-card"><div><strong>ทำครบทุกท่าแล้ว?</strong><p>ข้อมูลจะถูกบันทึกเป็น session พร้อมรายละเอียดแต่ละท่าเพื่อใช้ทำรายงานภายหลัง</p></div><button class="primary" id="finishWorkout">✓ บันทึก Workout วันนี้</button></div></section>
+<section id="history" class="section"><div class="section-intro"><span class="tag">LOGBOOK</span><h2>ประวัติการออกกำลังกาย</h2><p>ประวัติถูกเก็บเป็นข้อมูลแบบมีโครงสร้าง ไม่ใช่แค่ตัวเลขรวม</p></div><div class="panel"><div id="historyList" class="history-list"></div></div></section>
+<section id="progress" class="section"><div class="section-intro"><span class="tag">PROGRESS</span><h2>พัฒนาการของคุณ</h2><p>ดูจำนวนครั้ง น้ำหนัก และการทำสำเร็จแยกตามท่า</p></div><div class="stats-grid"><article><span>Workout</span><strong id="progressWorkouts">0</strong><small>ครั้ง</small></article><article><span>เวลา</span><strong id="progressMinutes">0</strong><small>นาที</small></article><article><span>เซ็ต</span><strong id="progressSets">0</strong><small>เซ็ต</small></article><article><span>ความสำเร็จ</span><strong id="progressRate">0%</strong><small>โดยรวม</small></article></div><div class="panel progress-panel"><div class="panel-head"><div><span class="eyebrow">EXERCISES</span><h3>Progress รายท่า</h3></div></div><div id="exerciseProgress"></div></div></section>
+<section id="settings" class="section"><div class="section-intro"><span class="tag">DATA & SETTINGS</span><h2>ตั้งค่า & ข้อมูล</h2><p>ตั้งค่าน้ำหนัก Base และสำรองข้อมูลออกเป็น JSON เพื่อใช้ทำรายงานในอนาคต</p></div><div class="panel"><div class="panel-head"><div><span class="eyebrow">BASE WEIGHT</span><h3>น้ำหนักเริ่มต้นของแต่ละท่า</h3></div></div><div id="weightSettings" class="settings-grid"></div></div><div class="panel data-panel"><div class="panel-head"><div><span class="eyebrow">DATA MANAGEMENT</span><h3>สำรอง / กู้คืนข้อมูล</h3></div></div><p class="muted">ข้อมูลหลักอยู่ในเครื่องนี้ และสามารถ Export เป็น JSON ได้ทุกเมื่อ เพื่อเก็บเป็นไฟล์หรือใช้ทำรายงานภายหลัง</p><div class="data-actions"><button class="secondary" id="exportData">↓ Export JSON</button><label class="secondary file-btn">↑ Import JSON<input id="importData" type="file" accept="application/json,.json" hidden></label><button class="danger" id="resetData">ล้างข้อมูลทั้งหมด</button></div><div id="dataStatus" class="data-status"></div></div></section>
+</main></div>
+<script src="app.js"></script>
+</body></html>
