@@ -1,0 +1,24 @@
+{
+  "plan": {
+    "name": "Fit & Strong 4-Day Plan",
+    "goal": "หุ่นเฟิร์มและสร้างความแข็งแรงพื้นฐาน",
+    "weeklyGoal": 4,
+    "days": {
+      "monday": {"type":"strength","title":"Full Body A","exercises":["goblet-squat","dumbbell-rdl","floor-press","one-arm-row","shoulder-press","plank"]},
+      "tuesday": {"type":"rest","title":"Recovery","exercises":[]},
+      "wednesday": {"type":"strength","title":"Full Body B","exercises":["goblet-squat","dumbbell-rdl","floor-press","one-arm-row","shoulder-press","plank"]},
+      "thursday": {"type":"rest","title":"Recovery","exercises":[]},
+      "friday": {"type":"strength","title":"Full Body C","exercises":["goblet-squat","dumbbell-rdl","floor-press","one-arm-row","shoulder-press","plank"]},
+      "saturday": {"type":"active-recovery","title":"Cardio + Core","exercises":["plank"]},
+      "sunday": {"type":"rest","title":"Rest","exercises":[]}
+    }
+  },
+  "exercises": {
+    "goblet-squat":{"name":"Goblet Squat","category":"Legs","sets":3,"reps":"10–12","defaultKg":8,"image":"https://images.squarespace-cdn.com/content/v1/5cf93199c24c0a000107ec5b/fc0d07d2-2f97-485c-9c7f-4ee883f9abb2/Goblet%2BSquat.png?format=1500w","source":"Craftsbury Outdoor Center"},
+    "dumbbell-rdl":{"name":"Dumbbell Romanian Deadlift","category":"Glutes · Hamstrings","sets":3,"reps":"10–12","defaultKg":8,"image":"https://www.lemon8-app.com/seo/image?index=2&item_id=7281083876959650309&sign=8e965c2aee33f3f2a2b9d5d7f6c2f7f0","source":"Lemon8 exercise form guide"},
+    "floor-press":{"name":"Dumbbell Floor Press","category":"Chest · Triceps","sets":3,"reps":"10–12","defaultKg":6,"image":"https://dol.ismcdn.jp/mwimgs/9/a/-/img_9a27926006ce155c3cfb31b9e505dddc104650.jpg","source":"Diamond Online exercise guide"},
+    "one-arm-row":{"name":"One-arm Dumbbell Row","category":"Back · Biceps","sets":3,"reps":"10 / side","defaultKg":8,"image":"https://i.pinimg.com/videos/thumbnails/originals/4a/cd/bd/4acdbd5c2baae91997388f14a69d0f27.0000000.jpg","source":"Form comparison guide"},
+    "shoulder-press":{"name":"Dumbbell Shoulder Press","category":"Shoulders","sets":3,"reps":"8–10","defaultKg":6,"image":"https://p19-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/o0iHvAlv6EAiMiIzD9iPgBomAXrA4vE2KABwBe~tplv-tiktokx-origin.image?dr=9636&idc=useast8&ps=13740610&shcp=55bbe6a9&shp=81f88b70&t=4d5b0474&x-expires=1772751600&x-signature=EqGPFqAhTbIdUCGDzbW9SH5dZL0%3D","source":"Technique comparison guide"},
+    "plank":{"name":"Plank","category":"Core","sets":3,"reps":"30–45 sec","defaultKg":0,"image":"https://1.bp.blogspot.com/-F9dP8bSujvs/XnfbdCoIYdI/AAAAAAAABuo/VU2EzSG2gmscgP5N_eVWvvxzvJIhD4tNgCLcBGAsYHQ/s1600/How%2Bto%2Bperform%2Bthe%2BBasic%2BPlank%2BInfographic.jpg","source":"Physical Education technique guide"}
+  }
+}
