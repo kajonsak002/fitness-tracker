@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FitTrack Pro · Warm-up</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{font-family:Kanit,sans-serif}.move{animation:move 1.8s ease-in-out infinite}@keyframes move{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.025)}}.pop{animation:pop .3s ease-out}@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+<div id="app"></div>
+<script>
+const WARMUPS=[
+ {name:'March in Place',th:'เดินยกเข่าอยู่กับที่',time:30,focus:'เพิ่มอุณหภูมิร่างกาย',pose:'march'},
+ {name:'Arm Circles',th:'หมุนแขนเปิดหัวไหล่',time:30,focus:'ไหล่ · อก · หลังส่วนบน',pose:'arms'},
+ {name:'World’s Greatest Stretch',th:'ยืดสะโพกและหลังขา',time:30,focus:'สะโพก · Hamstrings',pose:'stretch'},
+ {name:'Bodyweight Squat',th:'สควอตด้วยน้ำหนักตัว',time:30,focus:'ขา · ก้น · แกนกลาง',pose:'squat'},
+ {name:'Hip Hinge',th:'ฝึกพับสะโพก',time:30,focus:'ก้น · หลังขา',pose:'hinge'},
+ {name:'Reverse Lunge + Reach',th:'ก้าวถอยหลังพร้อมยกแขน',time:30,focus:'ขา · สะโพก · การทรงตัว',pose:'lunge'}
+];
+let i=0,remaining=WARMUPS[0].time,running=false,timer=null,startedAt=null,completed=[];
+function art(kind){const paths={march:'M50 34 L50 55 M50 40 L34 48 M50 40 L66 48 M50 55 L39 72 M50 55 L63 69',arms:'M50 34 L50 55 M50 41 L25 34 M50 41 L75 34 M50 55 L39 72 M50 55 L63 72',stretch:'M50 34 L55 54 M55 45 L34 52 M55 45 L72 41 M55 54 L35 70 M55 54 L78 68',squat:'M50 34 L50 53 M50 40 L32 48 M50 40 L68 48 M50 53 L34 67 M50 53 L66 67',hinge:'M50 34 L61 52 M50 42 L32 50 M50 42 L69 49 M61 52 L36 69 M61 52 L78 68',lunge:'M50 34 L50 53 M50 40 L31 31 M50 40 L70 28 M50 53 L35 72 M50 53 L69 64'};return `<svg viewBox="0 0 100 100" class="w-64 h-64 sm:w-80 sm:h-80 move" fill="none" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="25" r="8" fill="white" stroke="none"/><path d="${paths[kind]}"/><circle cx="24" cy="34" r="3" fill="white" stroke="none"/><circle cx="76" cy="34" r="3" fill="white" stroke="none"/></svg>`}
+function progress(){return ((i+(WARMUPS[i].time-remaining)/WARMUPS[i].time)/WARMUPS.length)*100}
+function start(){if(running)return;running=true;startedAt=startedAt||Date.now();timer=setInterval(()=>{if(remaining>0){remaining--;render()}else next()},1000);render()}
+function pause(){running=false;clearInterval(timer);render()}
+function next(){clearInterval(timer);running=false;completed.push(WARMUPS[i].name);if(i<WARMUPS.length-1){i++;remaining=WARMUPS[i].time;render()}else finish()}
+function skip(){clearInterval(timer);running=false;next()}
+function finish(){localStorage.setItem('fittrack-warmup-last',JSON.stringify({date:new Date().toISOString(),durationSeconds:Math.round((Date.now()-startedAt)/1000),exercises:completed.length}));document.getElementById('app').innerHTML=`<main class="min-h-screen grid place-items-center p-5"><div class="max-w-xl w-full text-center pop"><div class="mx-auto w-20 h-20 rounded-3xl bg-white text-slate-950 grid place-items-center text-4xl font-bold">✓</div><p class="text-xs tracking-[.3em] text-slate-500 mt-7">WARM-UP COMPLETE</p><h1 class="text-4xl sm:text-5xl font-semibold mt-2">ร่างกายพร้อมแล้ว</h1><p class="text-slate-400 mt-3">ไปต่อที่ Workout ตามตารางวันนี้ได้เลย</p><button onclick="continueWorkout()" class="mt-8 w-full bg-white text-slate-950 rounded-2xl py-4 font-semibold text-lg hover:scale-[1.01] transition">เริ่ม Workout ${'→'}</button></div></main>`}
+function continueWorkout(){if(parent&&parent!==window&&parent.startFitTrackWorkout)parent.startFitTrackWorkout();else location.href='./fittrack.html'}
+function render(){const e=WARMUPS[i],pct=progress();document.getElementById('app').innerHTML=`<main class="min-h-screen max-w-6xl mx-auto p-4 sm:p-7"><header class="flex items-center justify-between"><button onclick="exitWarmup()" class="text-slate-400 hover:text-white">← ออกจาก Warm-up</button><div class="text-sm text-slate-500">WARM-UP · ${i+1}/${WARMUPS.length}</div></header><div class="mt-7 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full bg-white transition-all duration-500" style="width:${pct}%"></div></div><section class="grid lg:grid-cols-[1.2fr_.8fr] gap-5 mt-5"><div class="rounded-[2rem] bg-white/5 border border-white/10 min-h-[480px] grid place-items-center relative overflow-hidden"><div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,.09),transparent_55%)]"></div><div class="relative text-center">${art(e.pose)}<p class="text-xs tracking-[.25em] text-slate-500">MOVE WITH CONTROL · FOCUS ON FORM</p></div></div><div class="rounded-[2rem] bg-white text-slate-950 p-6 sm:p-8 flex flex-col justify-between"><div><div class="flex items-center justify-between"><span class="text-xs tracking-widest text-slate-400">NEXT UP</span><span class="text-xs bg-slate-100 px-3 py-1.5 rounded-full">${e.time}s</span></div><h1 class="text-3xl sm:text-4xl font-semibold mt-5">${e.name}</h1><p class="text-lg text-slate-500 mt-1">${e.th}</p><div class="mt-6 p-4 rounded-2xl bg-slate-50"><p class="text-xs text-slate-400">โฟกัส</p><p class="font-medium mt-1">${e.focus}</p></div></div><div class="mt-8"><div class="text-center"><span class="text-6xl sm:text-7xl font-semibold tracking-tight">${remaining}</span><span class="text-slate-400 ml-2">วินาที</span></div><div class="grid grid-cols-[1fr_auto] gap-2 mt-6"><button onclick="${running?'pause()':'start()'}" class="py-4 rounded-2xl bg-slate-950 text-white font-semibold">${running?'พัก':'เริ่มท่า'}</button><button onclick="skip()" class="px-5 rounded-2xl border border-slate-200 text-slate-500">ข้าม</button></div></div></div></section><section class="mt-5 grid sm:grid-cols-3 gap-3">${WARMUPS.map((x,n)=>`<div class="rounded-2xl border ${n<i?'border-white/15 bg-white/5':'border-white/10'} p-4"><div class="flex justify-between text-xs"><span class="text-slate-400">${String(n+1).padStart(2,'0')}</span><span>${n<i?'✓':n===i?'NOW':''}</span></div><p class="font-medium mt-3">${x.name}</p><p class="text-xs text-slate-500 mt-1">${x.th}</p></div>`).join('')}</section><p class="text-center text-xs text-slate-600 mt-6">แนะนำให้วอร์มอัพก่อนทุก Workout · ไม่ต้องใช้น้ำหนัก</p></main>`}
+function exitWarmup(){clearInterval(timer);if(parent&&parent!==window&&parent.cancelWarmup)parent.cancelWarmup();else location.href='./fittrack.html'}
+render();
+</script>
+</body></html>
